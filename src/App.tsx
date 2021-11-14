@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AddCharacter } from "./pages/AddCharacter/AddCharacter";
+import { CharacterSheet } from "./pages/CharacterSheet/CharacterSheet";
+import { CharacterSheetList } from "./pages/CharacterSheetList/CharacterSheetList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<CharacterSheetList />} />
+                <Route path="/add" element={<AddCharacter />} />
+                <Route path=":id" element={<CharacterSheet />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
